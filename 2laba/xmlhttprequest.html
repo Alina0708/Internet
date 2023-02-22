@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+
+        const xhr = new XMLHttpRequest();
+// GET-запрос к ресурсу /hello
+xhr.open("GET", "/api/name");
+ 
+// обработчик получения ответа сервера
+xhr.onload = () => {
+    if (xhr.status == 200) {                // если код ответа 200
+        console.log(xhr.responseText);      // выводим полученный ответ на консоль браузера
+    } else {                                // иначе выводим текст статуса
+        console.log("Server response: ", xhr.statusText);
+    }
+};
+xhr.send();  
+
+        </script>
+</body>
+</html>
