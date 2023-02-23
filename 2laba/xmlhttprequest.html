@@ -7,38 +7,26 @@
     <title>Document</title>
 </head>
 <body>
+  <p id="surname"></p>
     <script>
         
-
-//         const xhr = new XMLHttpRequest();
-//        xhr.open("GET", "http://localhost:5000/api/name");
- 
-// // обработчик получения ответа сервера
-// xhr.onload = () => {
-//     if (xhr.status == 200) {                // если код ответа 200
-//         console.log(xhr.responseText);      // выводим полученный ответ на консоль браузера
-//     } else {                                // иначе выводим текст статуса
-//         console.log("Server response: ", xhr.statusText);
-//     }
-// };
-// xhr.send();  
-
-
-
       r = new XMLHttpRequest();
        r.open("GET", "http://localhost:5000/api/name", true);
-       //r.onreadystatechange = Handler;
-      r.send();
+
 
       // 4. Этот код сработает после того, как мы получим ответ сервера
-r.onload = function() {
-  if (r.status != 200) { // анализируем HTTP-статус ответа, если статус не 200, то произошла ошибка
+      r.onload = function() {
+     if (r.status != 200) { // анализируем HTTP-статус ответа, если статус не 200, то произошла ошибка
     alert(`Ошибка ${r.status}: ${r.statusText}`); // Например, 404: Not Found
-  } else { // если всё прошло гладко, выводим результат
+    }
+     else { // если всё прошло гладко, выводим результат
     alert(`Готово, получили ${r.response.length} байт`); // response -- это ответ сервера
-  }
+    console.log(r.response); 
+    document.getElementById("surname").innerHTML = r.response;
+  } 
 };
 
+r.send();
         </script>
 </body>
 </html>

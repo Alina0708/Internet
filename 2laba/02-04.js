@@ -1,7 +1,7 @@
 const http = require("http");
 const fs = require('fs').promises;
 const host = 'localhost';
-const port = 5001;
+const port = 5000;
 
 const requestListener = function (req, res) {
     fs.readFile(__dirname + "/xmlhttprequest.html")
@@ -16,12 +16,12 @@ const requestListener = function (req, res) {
             return;
         });
 
-
-
-      // r = new XMLHttpRequest();
-       //r.open("GET", "http://localhost:5000/api/name");
-      // r.send();
-        
+        if (req.url === '/api/name') {
+            res.setHeader("Content-Type", "text/plain; charset=utf8");
+            res.writeHead(200);
+            return  res.end('Севрюк Алина Эдуардовна');
+          }
+  
 };
 
 const server = http.createServer(requestListener);
