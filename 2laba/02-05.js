@@ -4,6 +4,7 @@ const host = 'localhost';
 const port = 5000;
 
 const requestListener = function (req, res) {
+    if (req.url === '/fetch') {
     fs.readFile(__dirname + "/fetch.html")
         .then(contents => {
             res.setHeader("Content-Type", "text/html");
@@ -15,6 +16,8 @@ const requestListener = function (req, res) {
             res.end(err);
             return;
         });
+    }
+  
 
         if (req.url === '/api/name') {
             res.setHeader("Content-Type", "text/plain; charset=utf8");
