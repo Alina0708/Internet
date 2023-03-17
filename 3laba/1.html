@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>hello</p>
+    <p id="results"></p>
+    <script>
+        let results = [];
+let startTime = Date.now();
+
+for (let x = 1; x <= 20; x++) {
+  fetch(`http://localhost:5000/fact?k=${x}`)
+    .then(response => response.json())
+    .then(data => {
+      const t = Date.now() - startTime;
+      const result = `${t}-${data.k}/${data.fact}`;
+      results.push(result);
+      document.getElementById('results').innerHTML = results.join('<br>');
+    })
+    .catch(error => console.error(error));
+}
+    </script>
+</body>
+</html>

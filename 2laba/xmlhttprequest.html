@@ -14,13 +14,13 @@
        r.open("GET", "http://localhost:5000/api/name", true);
 
 
-      // 4. Этот код сработает после того, как мы получим ответ сервера
+
       r.onload = function() {
-     if (r.status != 200) { // анализируем HTTP-статус ответа, если статус не 200, то произошла ошибка
-    alert(`Ошибка ${r.status}: ${r.statusText}`); // Например, 404: Not Found
+     if (r.status != 200) { 
+    alert(`Ошибка ${r.status}: ${r.statusText}`); 
     }
-     else { // если всё прошло гладко, выводим результат
-    alert(`Готово, получили ${r.response.length} байт`); // response -- это ответ сервера
+     else {
+    alert(`Готово, получили ${r.response.length} байт`); 
     console.log(r.response); 
     document.getElementById("surname").innerHTML = r.response;
   } 

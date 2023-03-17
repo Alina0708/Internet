@@ -4,6 +4,7 @@ const host = 'localhost';
 const port = 5000;
 
 const requestListener = function (req, res) {
+    if (req.url === '/jquery'){
     fs.readFile(__dirname + "/jquery.html")
         .then(contents => {
             res.setHeader("Content-Type", "text/html");
@@ -15,6 +16,7 @@ const requestListener = function (req, res) {
             res.end(err);
             return;
         });
+    }
 
         if (req.url === '/api/name') {
             res.setHeader("Content-Type", "text/plain; charset=utf8");
